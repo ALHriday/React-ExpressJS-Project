@@ -3,6 +3,9 @@ import { Link } from "react-router-dom";
 import Swal from 'sweetalert2'
 import { AuthContext } from "../AuthProvider/AuthProvider";
 import { useContext } from "react";
+import { GrView } from "react-icons/gr";
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
 
 
 const Coffee = ({ coffee }) => {
@@ -39,7 +42,7 @@ const Coffee = ({ coffee }) => {
             }
         });
 
-        
+
     };
 
     return (
@@ -53,9 +56,11 @@ const Coffee = ({ coffee }) => {
                 <h1>Name: {name}</h1>
             </div>
             <div className="flex flex-col gap-2">
-                <Link to={`/coffeeDetails/${_id}`}><button className="btn btn-primary">Details</button></Link>
-                <Link to={`/updateCoffee/${_id}`}><button className="btn btn-accent">Edit</button></Link>
-                <button onClick={() => handleDeleteItem(_id)} className="btn bg-red-600">Del</button>
+                <Link to={`/coffeeDetails/${_id}`}><button className="btn btn-primary"><GrView /></button></Link>
+                <Link to={`/updateCoffee/${_id}`}><button className="btn btn-accent"><FaEdit /></button></Link>
+                <div>
+                    <button onClick={() => handleDeleteItem(_id)} className="btn bg-red-600"><MdDelete /></button>
+                </div>
             </div>
 
         </div>
