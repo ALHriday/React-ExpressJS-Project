@@ -19,7 +19,7 @@ const AddCoffee = () => {
         console.log('New Data', coffee);
 
 
-        fetch('http://localhost:7000/coffees', {
+        fetch('https://coffee-store-rosy.vercel.app/coffees', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(coffee)
