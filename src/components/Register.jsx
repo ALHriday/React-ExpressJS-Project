@@ -12,8 +12,11 @@ const Register = () => {
         e.preventDefault();
         const form = e.target;
 
+        const name = form.name.value;
         const email = form.email.value;
         const password = form.password.value;
+
+        const newUser = {name, email, password };
 
         createNewUser(email, password)
             .then(result => {
@@ -29,6 +32,22 @@ const Register = () => {
                 }
             }).catch(error => setErrorMessage(error.message)
             )
+
+            // Register User Data
+
+            fetch('https://coffee-store-rosy.vercel.app/user', {
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(newUser)
+            })
+                .then(res => res.json())
+                .then(n => {
+                    if (n.insertedId) {
+                        alert('data post hoice!!!');
+                        console.log(n);
+                    }
+                }
+                )
     }
 
     return (
